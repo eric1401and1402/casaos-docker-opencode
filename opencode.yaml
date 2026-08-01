@@ -19,7 +19,7 @@ services:
       icon: https://casaos.io
     ports:
       - target: 3000
-        published: "3001"
+        published: "3000"
         protocol: tcp
     restart: unless-stopped
     stdin_open: true

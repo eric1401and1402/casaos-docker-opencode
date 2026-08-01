@@ -13,8 +13,6 @@ services:
       resources:
         limits:
           memory: 1024M
-    environment:
-      - USER_PASSWORD=
     hostname: opencode
     image: ghcr.io/anomalyco/opencode:latest
     labels:

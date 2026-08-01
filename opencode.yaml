@@ -1,0 +1,52 @@
+name: poetic_silasak
+services:
+  opencode:
+    cpu_shares: 50
+    command:
+      - web
+      - --hostname
+      - 0.0.0.0
+      - --port
+      - "3000"
+    container_name: opencode
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    environment:
+      - USER_PASSWORD=
+    hostname: opencode
+    image: ghcr.io/anomalyco/opencode:latest
+    labels:
+      icon: https://casaos.io
+    ports:
+      - target: 3000
+        published: "3001"
+        protocol: tcp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: /DATA/opencode/config
+        target: /home/opencode/.opencode
+      - type: bind
+        source: /DATA/opencode/work
+        target: /workspace
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://casaos.io
+  index: /
+  is_uncontrolled: false
+  port_map: ""
+  scheme: http
+  store_app_id: poetic_silasak
+  title:
+    custom: ""
+    en_us: opencode

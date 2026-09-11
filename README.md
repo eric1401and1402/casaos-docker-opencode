@@ -51,7 +51,7 @@ http://<your-host-ip>:3000
 | Resource | Value |
 |---|---|
 | CPU Shares | 50 |
-| Memory Limit | 2048 MB |
+| Memory Limit | 1024 MB |
 | Port | 3000 |
 | Restart Policy | `unless-stopped` |
 | Healthcheck | HTTP `localhost:3000` (30s interval) |

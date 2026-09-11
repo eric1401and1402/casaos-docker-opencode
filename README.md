@@ -67,7 +67,7 @@ http://<your-host-ip>:3000
 
 Edit `opencode.yaml` before uploading to adjust:
 
-- **Memory limit**: Change `2048M` in `deploy.resources.limits.memory`
+- **Memory limit**: Change `1024M` in `deploy.resources.limits.memory`
 - **Port**: Change `3000` in both `ports` and `command` sections
 - **Workspace path**: Change `/DATA/opencode/work` to your preferred directory
 - **Timezone**: Change `TZ` environment variable to your timezone

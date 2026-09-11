@@ -1,4 +1,4 @@
-name: poetic_silasak
+name: opencode
 services:
   opencode:
     cpu_shares: 50
@@ -24,6 +24,8 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+    environment:
+      - TZ=Asia/Taipei
     volumes:
       - type: bind
         source: /DATA/opencode/config
@@ -31,20 +33,31 @@ services:
       - type: bind
         source: /DATA/opencode/work
         target: /workspace
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     devices: []
     cap_add: []
     network_mode: bridge
     privileged: false
 x-casaos:
-  author: self
-  category: self
+  author: eric1401and1402
+  category: development
   hostname: ""
   icon: https://casaos.io
   index: /
   is_uncontrolled: false
   port_map: ""
   scheme: http
-  store_app_id: poetic_silasak
+  store_app_id: opencode
   title:
     custom: ""
-    en_us: opencode
+    en_us: OpenCode

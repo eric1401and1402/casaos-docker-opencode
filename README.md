@@ -51,17 +51,34 @@ http://<your-host-ip>:3000
 | Resource | Value |
 |---|---|
 | CPU Shares | 50 |
-| Memory Limit | 1024 MB |
+| Memory Limit | 2048 MB |
 | Port | 3000 |
 | Restart Policy | `unless-stopped` |
+| Healthcheck | HTTP `localhost:3000` (30s interval) |
+| Log Rotation | JSON, max 10MB x 3 files |
+
+### Environment Variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `TZ` | `Asia/Taipei` | Container timezone |
 
 ## Customization
 
 Edit `opencode.yaml` before uploading to adjust:
 
-- **Memory limit**: Change `1024M` in `deploy.resources.limits.memory`
+- **Memory limit**: Change `2048M` in `deploy.resources.limits.memory`
 - **Port**: Change `3000` in both `ports` and `command` sections
 - **Workspace path**: Change `/DATA/opencode/work` to your preferred directory
+- **Timezone**: Change `TZ` environment variable to your timezone
+- **Image tag**: Change `ghcr.io/anomalyco/opencode:latest` to a specific version for stability
+
+## Features
+
+- Healthcheck enabled for container monitoring
+- Automatic log rotation (10MB max, 3 files)
+- Persistent config and workspace volumes
+- CasaOS App Store ready
 
 ## License
 
